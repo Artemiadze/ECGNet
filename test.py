@@ -8,6 +8,10 @@ from model.CNN import buildModel_2DCNN  # Импортируем функцию 
 
 # Пути к данным
 test_dir = "dataset/test"
+"""# Define paths to the dataset directories
+data_dir = '/kaggle/input/ecg-analysis/ECG_DATA'
+train_dir = os.path.join(data_dir, 'train')
+test_dir = os.path.join(data_dir, 'test')"""
 
 # Получаем DataLoader
 _, test_loader = get_dataloaders("dataset/train", test_dir)

@@ -8,12 +8,15 @@ class ECGDataset(Dataset):
     def __init__(self, root_dir, transform=None):
         self.root_dir = root_dir
         self.transform = transform
+        self.files = [f for f in os.listdir(root_dir) if f.endswith(".jpg")]
         self.image_files = []
         self.labels = []
 
+        print(f"Found {len(self.files)} files in {root_dir}")
+
         class_map = {
-            "ECG Images of Patients with Abnormal Heartbeat": 1,
-            "Normal Person ECG Images": 0
+            "ECG Images of Patient that have abnormal heartbeat (233x12=2796)": 1,
+            "Normal Person ECG Images (284x12=3408)": 0
         }
 
         for class_name, label in class_map.items():
@@ -48,3 +51,4 @@ def get_dataloaders(train_dir, test_dir, batch_size=32, img_size=(224, 224)):
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
     
     return train_loader, test_loader
+

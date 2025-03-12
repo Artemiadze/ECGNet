@@ -12,11 +12,22 @@ from model.CNN import buildModel_2DCNN  # Импортируем функцию 
 train_dir = "dataset/train"
 test_dir = "dataset/test"
 
+"""# Define paths to the dataset directories
+data_dir = '/kaggle/input/ecg-analysis/ECG_DATA'
+train_dir = os.path.join(data_dir, 'train')
+test_dir = os.path.join(data_dir, 'test')"""
+
 # Получаем DataLoader'ы
 train_loader, test_loader = get_dataloaders(train_dir, test_dir)
 
-# Инициализация модели
+"""# Инициализация модели
 model = buildModel_2DCNN(1, last_layer='linear')  # 1 канал (Ч/Б изображения)
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)"""
+
+# Инициализация модели
+model = buildModel_2DCNN(1, last_layer='linear')
+model.summary()  # 1 канал (Ч/Б изображения)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
